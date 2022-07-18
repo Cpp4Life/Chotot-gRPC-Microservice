@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "Chotot-Microservice/cmd/pb";
+
+import "google/protobuf/empty.proto";
+import "cmd/proto/product_message.proto";
+import "cmd/proto/user_service.proto";
+
+service ProductService {
+  rpc GetProduct(ProductId) returns (Product);
+  rpc GetProducts(google.protobuf.Empty) returns (stream Product);
+  rpc GetProductsByUserId(UserToken) returns (stream Product);
+  rpc CreateProduct(Product) returns (Product);
+  rpc UpdateProduct(Product) returns (google.protobuf.Empty);
+  rpc DeleteProduct(ProductId) returns (google.protobuf.Empty);
+  rpc SearchProducts(SearchRequest) returns (stream Product);
+}
+
+message ProductId {
+  string id = 1;
+  UserToken key = 2;
+}
+
+message SearchRequest {
+  string key_name = 1;
+  string key_page = 2;
+}

@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "Chotot-Microservice/cmd/pb";
+
+import "google/protobuf/empty.proto";
+
+service UserService {
+  rpc GetUser(UserToken) returns (User);
+  rpc UpdateUser(UpdateRequest) returns (google.protobuf.Empty);
+}
+
+message UserToken {
+  string header = 1;
+}
+
+message User {
+  string phone = 1;
+  string username = 2;
+  string password = 3;
+  string address = 4;
+  string email = 5;
+  bool is_admin = 6;
+}
+
+message UpdateRequest {
+  UserToken key = 1;
+  string username = 2;
+  string address = 3;
+  string email = 4;
+}

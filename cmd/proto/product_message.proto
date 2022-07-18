@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "Chotot-Microservice/cmd/pb";
+
+import "cmd/proto/user_service.proto";
+
+message Product {
+  string id = 100;
+  string name = 1;
+  int64 user_id = 2;
+  string cat_id = 3;
+  string type_id = 4;
+  double price = 5;
+  bool state = 6;
+  int64 created_time = 7;
+  int64 expired_time = 8;
+  string address = 9;
+  string content = 10;
+  UserToken key = 11;
+}
